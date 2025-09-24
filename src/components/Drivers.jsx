@@ -7,8 +7,10 @@ export default function Drivers() {
   return (
     <div className='w-full'>
           <div className='p-[10px]'>
-       <table className="border-2 border-green-700 border-spacing-1.5 w-full text-center">
-  <thead className="bg-green-200">
+       <table className={`border-2 border-black/80 border-spacing-1.5 w-full text-center
+        border-collapse overflow-x-scroll
+        `}>
+  <thead className="bg-violet-600 text-white">
     <tr>
       <th className="border px-2 py-1">Driver Name</th>
       <th className="border px-2 py-1">Status</th>
