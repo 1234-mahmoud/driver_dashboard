@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "name": "John Smith",
+      "status": "available",
+      "vehicle": "Truck A1",
+      "location": "Downtown Hub",
+      "nextShift": "2025-09-22 08:00",
+      "hoursThisWeek": 32,
+      "rating": 4.8
+    },
+    {
+      "id": 2,
+      "name": "Sarah Johnson",
+      "status": "on-route",
+      "vehicle": "Van B2",
+      "location": "Route 45",
+      "nextShift": "2025-09-22 14:00",
+      "hoursThisWeek": 28,
+      "rating": 4.9
+    },
+    {
+      "id": 3,
+      "name": "Mike Wilson",
+      "status": "off-duty",
+      "vehicle": "Truck C3",
+      "location": "Home",
+      "nextShift": "2025-09-23 06:00",
+      "hoursThisWeek": 40,
+      "rating": 4.6
+    }
+  ]

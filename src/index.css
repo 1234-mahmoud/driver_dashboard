@@ -1,0 +1,15 @@
+@import "tailwindcss";
+/* index.css */
+@import url('https://unpkg.com/leaflet/dist/leaflet.css');
+
+:root{
+    --icon-width:25px;
+    --icon-height:25px;
+}
+
+ul li{
+    padding:10px;
+    margin: 1px;
+background: #0000004b;
+border-radius: 10px;
+}
