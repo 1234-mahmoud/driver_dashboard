@@ -78,10 +78,12 @@ export default function Dashboard() {
           {data.map((d) => (
             <div key={d.id} className={`flex justify-between items-center 
             px-[20px] py-[15px] bg-gray-100 rounded
-            
+            max-sm:flex-col max-sm:gap-[20px]
             `}>
-              <div className={` flex items-center gap-[20px]`}>
-                <div className={`icon w-[50px] h-[50px] rounded-full bg-blue-200 flex justify-center items-center`}>
+              <div className={` flex items-center gap-[20px]
+                max-sm:justify-between max-sm:w-full
+                `}>
+                <div className={`icon shrink-0 w-[50px] h-[50px] rounded-full bg-blue-200 flex justify-center items-center`}>
                   <img src="user.svg" alt="" className="w-[var(--icon-width)] h-[var(--icon-height)]"/>
                 </div>
                 <span className="flex flex-col gap-[5px">
@@ -138,7 +140,7 @@ export default function Dashboard() {
                   <span className={`text-blue-400`}>{d.nextShift}</span>
                 </span>
               </div>
-               <div className={`icon w-[50px] h-[50px] rounded-full bg-blue-200 flex justify-center items-center`}>
+               <div className={`icon shrink-0 w-[50px] h-[50px] rounded-full bg-blue-200 flex justify-center items-center`}>
                   <img src="user.svg" alt="" className="w-[var(--icon-width)] h-[var(--icon-height)]"/>
                 </div>
             </div>
