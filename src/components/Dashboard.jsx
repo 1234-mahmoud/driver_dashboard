@@ -23,7 +23,11 @@ export default function Dashboard() {
       >
         <div
           className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
-            bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl`}
+            bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl
+            
+
+            
+            `}
         >
           <div className={`flex flex-col`}>
             <span>Total Drivers</span>
