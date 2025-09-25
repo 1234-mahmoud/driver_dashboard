@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <div
-      className={` max-h-full min-h-lvh 
+      className={`relative max-h-full min-h-lvh 
          bg-gradient-to-b from-blue-500 to-blue-600
         text-white flex flex-col 
         py-[20px] px-[5px]
@@ -38,7 +38,7 @@ ${toggle ? "w-[200px]" : "w-[70px] overflow-hidden"}
       </div>
 
       <div className="my-[50px] flex flex-col items-center gap-4">
-        <ul className="links w-full flex flex-col gap-4 text-xl">
+        <ul className=" links w-full flex flex-col gap-4 text-xl">
           <li className="w-full">
             <Link to="/" className="flex items-center gap-[30px] w-full ">
               <img
