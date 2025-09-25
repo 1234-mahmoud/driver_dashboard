@@ -8,17 +8,19 @@ import UserForm from "./components/UserForm";
 import RouteForm from "./components/RouteForm";
 function App() {
   return (
-    <div className="relative flex">
+    <div className="relative flex min-h-screen">
       {/* <DriverSchedulingDashboard/> */}
       <BrowserRouter>
       <Header />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/Drivers" element={<Drivers />} />
-          <Route path="/UserForm" element={<UserForm />} />
-          <Route path="/RouteForm" element={<RouteForm />} />
-          {/* <Route path="/Test" element={<DriverSchedulingDashboard/>} /> */}
-        </Routes>
+        <main className="flex-1 ml-[70px] lg:ml-[200px] transition-all duration-500 ease-in-out">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/Drivers" element={<Drivers />} />
+            <Route path="/UserForm" element={<UserForm />} />
+            <Route path="/RouteForm" element={<RouteForm />} />
+            {/* <Route path="/Test" element={<DriverSchedulingDashboard/>} /> */}
+          </Routes>
+        </main>
       </BrowserRouter>
     </div>
   );

@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function RouteForm() {
   return (
-   <div className="w-full h-lvh flex justify-center items-center bg-gray-100 p-4">
-  <form className="bg-gray-200 p-6 rounded-xl shadow-md flex flex-col gap-5 w-full max-w-md">
-  <h1 className={`font-bold text-xl`}>Enter Your Path</h1>
+   <div className="w-full h-lvh flex justify-center items-center bg-gray-100 p-4 max-sm:p-2">
+  <form className="bg-gray-200 p-6 rounded-xl shadow-md flex flex-col gap-5 w-full max-w-md max-sm:p-4">
+  <h1 className={`font-bold text-xl max-sm:text-lg`}>Enter Your Path</h1>
     <label className="flex flex-col text-gray-700 font-semibold">
      From:
       <input

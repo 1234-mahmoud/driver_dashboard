@@ -18,14 +18,13 @@ export default function Dashboard() {
         Drivers Scheduling Dashbord
       </div>
 
-      <div
-        className={`my-[50px] w-full p-[30px] flex justify-center items-center flex-wrap gap-[20px]`}
-      >
+        <div
+          className={`my-[50px] w-full p-[30px] flex justify-center items-center flex-wrap gap-[20px] max-sm:p-[15px]`}
+        >
         <div
           className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
             bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl
-            
-
+            max-sm:w-[200px] max-sm:h-[100px] max-sm:gap-[20px] max-sm:p-4
             
             `}
         >
@@ -43,7 +42,8 @@ export default function Dashboard() {
 
         <div
           className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
-            bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl`}
+            bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl
+            max-sm:w-[200px] max-sm:h-[100px] max-sm:gap-[20px] max-sm:p-4`}
         >
           <div className={`flex flex-col`}>
             <span>Available Drivers</span>
@@ -59,7 +59,8 @@ export default function Dashboard() {
 
         <div
           className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
-            bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-6 rounded-xl`}
+            bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-6 rounded-xl
+            max-sm:w-[200px] max-sm:h-[100px] max-sm:gap-[20px] max-sm:p-4`}
         >
           <div className={`flex flex-col`}>
             <span>On Route</span>
@@ -74,10 +75,10 @@ export default function Dashboard() {
         </div>
       </div>
 {/* ----------------------------------------00000----------------------------- */}
-     <div className={`w-full flex gap-[30px] p-[20px] max-md:flex-wrap`}>
+      <div className={`w-full flex gap-[30px] p-[20px] max-md:flex-wrap max-sm:flex-col max-sm:gap-[20px] max-sm:p-[15px]`}>
        {/* --------------------------------------------------- */}
 
-      <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl`}>
+      <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl max-sm:flex-1`}>
         <p className={`font-semibold text-xl text-black/80`}>Driver Status</p>
         <div className={`flex flex-col gap-[20px]`}>
           {data.map((d) => (
@@ -129,7 +130,7 @@ export default function Dashboard() {
 
       {/* --------------------------------------------------- */}
 
-     <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl`}>
+      <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl max-sm:flex-1`}>
         <p className={`font-semibold text-xl text-black/80`}>Today's Schedule</p>
         <div className={`flex flex-col gap-[20px]`}>
           {data.map((d) => (
