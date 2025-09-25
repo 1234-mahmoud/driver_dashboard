@@ -5,7 +5,7 @@ export default function Drivers() {
     const availableCount = data.filter(driver => driver.status === "available").length;
 
   return (
-    <div className='w-full'>
+    <div className='w-full h-screen'>
           <div className='p-[10px] max-sm:p-[5px]'>
        <div className="overflow-x-auto">
        <table className={`border-2 border-black/80 border-spacing-1.5 w-full text-center
