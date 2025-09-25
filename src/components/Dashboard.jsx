@@ -12,6 +12,7 @@ export default function Dashboard() {
         className={`bar h-[50px] bg-blue-400
         flex justify-center items-center 
         text-white font-bold text-2xl
+        max-sm:text-xl
         `}
       >
         Drivers Scheduling Dashbord

@@ -11,7 +11,9 @@ export default function UserForm() {
     <div className={`w-full bg-gray-100`}>
       <div>
         <h1 className={`text-center m-[20px] font-bold text-2xl text-black/60`}>Are You a Customer Or Driver?</h1>
-      <div className={`flex justify-center items-center gap-[40px]`}>
+      <div className={`flex justify-center items-center gap-[40px]
+        max-sm:flex-col  max-sm:items-start max-sm:px-[20px]
+        `}>
         <label className="flex items-center gap-[5px] text-xl">
         <input
           type="radio"

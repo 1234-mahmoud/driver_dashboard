@@ -11,7 +11,7 @@ export default function Header() {
     <div
       className={`relative max-h-full min-h-lvh 
          bg-gradient-to-b from-blue-500 to-blue-600
-        text-white flex flex-col 
+        text-white flex flex-col shrink-0
         py-[20px] px-[5px]
         transition-all duration-500 ease-in-out
 
