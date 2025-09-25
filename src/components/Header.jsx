@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <div
-      className={`fixed z-40 max-h-full min-h-lvh 
+      className={`fixed z-40 h-screen
          bg-gradient-to-b from-blue-500 to-blue-600
         text-white flex flex-col shrink-0
         py-[20px] px-[5px]
