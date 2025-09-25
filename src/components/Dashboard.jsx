@@ -1,11 +1,12 @@
-import data from "../data/data.json";
+import { useScheduler } from "./SchedulerContext";
 export default function Dashboard() {
-  const availableCount = data.filter(
+  const { drivers, routes } = useScheduler();
+  const availableCount = drivers.filter(
     (driver) => driver.status === "available"
   ).length;
 
 
-  const onroute = data.filter((driver) => driver.status === "on-route").length;
+  const onroute = drivers.filter((driver) => driver.status === "on-route").length;
   return (
     <div className="w-full bg-gray-100">
       <div
@@ -18,19 +19,17 @@ export default function Dashboard() {
         Drivers Scheduling Dashbord
       </div>
 
+      <div
+        className={`my-[50px] w-full p-[30px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] max-sm:p-[15px]`}
+      >
         <div
-          className={`my-[50px] w-full p-[30px] flex justify-center items-center flex-wrap gap-[20px] max-sm:p-[15px]`}
-        >
-        <div
-          className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
+          className={`flex justify-between items-center 
             bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl
-            max-sm:w-[200px] max-sm:h-[100px] max-sm:gap-[20px] max-sm:p-4
-            
             `}
         >
           <div className={`flex flex-col`}>
             <span>Total Drivers</span>
-            <span className="text-2xl font-bold">{data.length}</span>
+            <span className="text-2xl font-bold">{drivers.length}</span>
           </div>
 
           <img
@@ -41,9 +40,8 @@ export default function Dashboard() {
         </div>
 
         <div
-          className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
-            bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl
-            max-sm:w-[200px] max-sm:h-[100px] max-sm:gap-[20px] max-sm:p-4`}
+          className={`flex justify-between items-center 
+            bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl`}
         >
           <div className={`flex flex-col`}>
             <span>Available Drivers</span>
@@ -58,9 +56,8 @@ export default function Dashboard() {
         </div>
 
         <div
-          className={`w-[250px] h-[120px] flex justify-center items-center gap-[40px] 
-            bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-6 rounded-xl
-            max-sm:w-[200px] max-sm:h-[100px] max-sm:gap-[20px] max-sm:p-4`}
+          className={`flex justify-between items-center 
+            bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-6 rounded-xl`}
         >
           <div className={`flex flex-col`}>
             <span>On Route</span>
@@ -81,7 +78,7 @@ export default function Dashboard() {
       <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl max-sm:flex-1`}>
         <p className={`font-semibold text-xl text-black/80`}>Driver Status</p>
         <div className={`flex flex-col gap-[20px]`}>
-          {data.map((d) => (
+          {drivers.map((d) => (
             <div key={d.id} className={`flex justify-between items-center 
             px-[20px] py-[15px] bg-gray-100 rounded
             max-sm:flex-col max-sm:gap-[20px]
@@ -133,7 +130,7 @@ export default function Dashboard() {
       <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl max-sm:flex-1`}>
         <p className={`font-semibold text-xl text-black/80`}>Today's Schedule</p>
         <div className={`flex flex-col gap-[20px]`}>
-          {data.map((d) => (
+          {drivers.map((d) => (
             <div key={d.id} className={`flex justify-between items-center 
             px-[20px] py-[15px] bg-gray-100 rounded
             
@@ -153,12 +150,68 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
-
-
-
-
-
+      {/* Routes List */}
+      <div className={`flex-1/2 flex flex-col gap-[20px] p-[15px] bg-white rounded-xl max-sm:flex-1 mt-[20px]`}>
+        <p className={`font-semibold text-xl text-black/80`}>Routes & Assignment</p>
+        <div className={`flex flex-col gap-[12px]`}>
+          {routes.length === 0 && <span className="text-black/60">No routes yet.</span>}
+          {routes.map((r) => (
+            <div key={r.id} className="flex justify-between items-center px-[20px] py-[12px] bg-gray-100 rounded">
+              <div className="flex flex-col">
+                <span className="font-semibold">{r.title}</span>
+                <span className="text-black/80">{r.from} → {r.to} • {r.date} • {r.startTime}-{r.endTime}</span>
+              </div>
+              <div className="flex items-center gap-[8px]">
+                {r.assignedDriverId ? (
+                  <span className="text-green-700 font-medium">Assigned: {drivers.find(d=>d.id===r.assignedDriverId)?.name || "Unknown"}</span>
+                ) : (
+                  <span className="text-red-700 font-medium">Unassigned</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
      </div>
+      {/* Simple Availability Calendar */}
+      <div className={`w-full p-[20px] max-sm:p-[15px]`}>
+        <div className={`bg-white rounded-xl p-[15px]`}>
+          <p className={`font-semibold text-xl text-black/80 mb-3`}>Availability Calendar (next 7 days)</p>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left border-collapse">
+              <thead>
+                <tr>
+                  <th className="py-2 px-3 border">Driver</th>
+                  {[...Array(7)].map((_, i) => {
+                    const day = new Date();
+                    day.setDate(day.getDate() + i);
+                    const label = day.toLocaleDateString();
+                    return <th key={i} className="py-2 px-3 border">{label}</th>
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {drivers.map(d => (
+                  <tr key={d.id}>
+                    <td className="py-2 px-3 border font-medium">{d.name}</td>
+                    {[...Array(7)].map((_, i) => {
+                      const day = new Date();
+                      day.setDate(day.getDate() + i);
+                      const iso = day.toISOString().slice(0,10);
+                      const hasRoute = routes.some(r => r.assignedDriverId === d.id && r.date === iso);
+                      return (
+                        <td key={i} className={`py-2 px-3 border text-sm ${hasRoute ? 'bg-green-100 text-green-800' : 'bg-gray-50 text-gray-600'}`}>
+                          {hasRoute ? 'Assigned' : 'Free'}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
